@@ -1,0 +1,36 @@
+---
+# tasks file for kube_nodes
+ - name: "Provisioning OS on AWS using Ansible"
+   amazon.aws.ec2_instance:
+       key_name: "my-ansible-worker"
+       instance_type: "t2.micro"
+       image: "ami-08e0ca9924195beba"
+       wait: yes
+       count: 1
+       instance_tags:
+          Name: Kube_Master
+       vpc_subnet_id: "subnet-023a336a"
+       assign_public_ip: yes
+       region: "ap-south-1"
+       state: present
+       group_id: "sg-01609a296118484ca"
+       aws_access_key: "{{access_key}}"
+       aws_secret_key: "{{secret_key}}"
+
+ - name: "Provisioning OS on AWS using Ansible"
+   amazon.aws.ec2_instance:
+       key_name: "my-ansible-worker"
+       instance_type: "t2.micro"
+       image: "ami-08e0ca9924195beba"
+       wait: yes
+       count: 2
+       instance_tags:
+          Name: Kube_Slave
+       vpc_subnet_id: "subnet-023a336a"
+       assign_public_ip: yes
+       region: "ap-south-1"
+       state: present
+       group_id: "sg-01609a296118484ca"
+       aws_access_key: "{{access_key}}"
+       aws_secret_key: "{{secret_key}}"
+

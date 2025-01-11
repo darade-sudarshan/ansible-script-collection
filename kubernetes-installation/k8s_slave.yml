@@ -1,0 +1,3 @@
+- hosts: slave
+  roles:
+          - role: k8s_slave
